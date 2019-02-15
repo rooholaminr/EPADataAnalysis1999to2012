@@ -1,16 +1,13 @@
-# National Emissions Inventory database
-#fine particulate matter pollution in the United states over the 10-year period 1999-2008
 #read main data :
 NEI <- readRDS(file.path('pm25em', 'summarySCC_PM25.rds'))
 
-################# ggplot2 plot of em over type regarding types
 
-### libraries
+### libs
 library(tidyr)
 library(dplyr)
 library(ggplot2)
 
-############## forming data
+### Prep data
 NEI.BAl <- NEI[NEI$fips == "24510",]
 NEI.BAl <- NEI.BAl[, 4:6]
 row.names(NEI.BAl) <- NULL
