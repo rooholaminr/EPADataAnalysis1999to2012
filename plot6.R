@@ -1,9 +1,10 @@
+
+### read main data
+NEI <- readRDS(file.path('pm25em', 'summarySCC_PM25.rds'))
+###libs
 library(ggplot2)
 library(tidyr)
-
-###################
-NEI <- readRDS(file.path('pm25em', 'summarySCC_PM25.rds'))
-#####################
+### Prep data
 baltimoreVehicle <- NEI[NEI$fips == "24510",]
 baltimoreVehicle <-
       baltimoreVehicle[baltimoreVehicle$type == "ON-ROAD",]
@@ -22,7 +23,7 @@ df <-
             'Baltimore':'Los Angeles'
       )
 df$year <- factor(as.character(df$year))
-
+### Plot
 png('plot6.png',width = 500,height = 500,unit= 'px')
 
 ggplot(df, aes(x = year, y = value, group = city)) +
