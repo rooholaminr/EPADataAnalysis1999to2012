@@ -1,12 +1,13 @@
-library(ggplot2)
-############
+# read data
 NEI <- readRDS(file.path('pm25em', 'summarySCC_PM25.rds'))
-###########
+### libs
+library(ggplot2)
+### Prep Data
 baltimoreVehicle <- NEI[NEI$fips == "24510",]
 baltimoreVehicle <-
       baltimoreVehicle[baltimoreVehicle$type == "ON-ROAD",]
 bv <- aggregate(Emissions ~ year, baltimoreVehicle, FUN = sum)
-
+### plot
 png("plot5.png",
     width = 500,
     height = 500,
